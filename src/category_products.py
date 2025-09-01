@@ -4,13 +4,13 @@ class Category:
     name: str
     description: str
     products: list
-    count_category = 0
-    count_products = 0
+    category_count = 0
+    product_count = 0
 
     def __init__(self, name: str, description: str, products: list | None = None):
         """Метод, который инициализирует экземпляры класса."""
         self.name = name
         self.description = description
         self.products = products if products else []
-        Category.count_category += 1
-        Category.count_products += len(products) if products else 0
+        Category.category_count += 1
+        Category.product_count += len(products) if products else 0
