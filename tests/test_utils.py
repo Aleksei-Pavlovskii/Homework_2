@@ -18,7 +18,7 @@ def test_create_objects_from_json(dict_category: list[dict]) -> None:
         category.description
         == "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником"
     )
-    product = category.products[0]
+    product = category.products_in_list[0]
     assert product.name == '55" QLED 4K'
     assert product.description == "Фоновая подсветка"
     assert product.price == 123000.0
