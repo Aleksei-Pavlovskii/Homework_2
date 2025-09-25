@@ -28,6 +28,14 @@ def test_new_product_add(new_product: dict, list_products: list) -> None:
 def test_price_setter(product: Product) -> None:
     product.price = 0
     assert product.price == 31000.0
-    with patch('builtins.input', return_value='y'):
+    with patch("builtins.input", return_value="y"):
         product.price = 21000.0
     assert product.price == 21000.0
+
+
+def test_str_product(product: Product) -> None:
+    assert str(product) == "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт."
+
+
+def test_add_product(first_product: Product, second_product: Product) -> None:
+    assert first_product + second_product == 1047000.0
