@@ -16,6 +16,12 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other) -> Any:
+        return self.price * self.quantity + other.price * other.quantity
+
     @classmethod
     def new_product(cls, product: dict, product_list: Any | None = None) -> Any:
         """Клас-метод который создает новый продукт или обновляет существующий"""
@@ -45,7 +51,8 @@ class Product:
         if new_price < self.__price:
             print(
                 'Новая цена ниже старой, если хотите изменить введите "y", '
-                'чтобы отменить изменение введите любой символ')
+                "чтобы отменить изменение введите любой символ"
+            )
             user_input = input()
             if user_input.lower() == "y":
                 self.__price = new_price
