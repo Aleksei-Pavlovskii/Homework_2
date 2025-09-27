@@ -1,3 +1,5 @@
+import pytest
+
 from src.category_products import Category
 from src.product import Product
 
@@ -27,6 +29,11 @@ def test_add_product(first_category: Category, product: Product) -> None:
     assert len(first_category.products_in_list) == 2
     first_category.add_product(product)
     assert len(first_category.products_in_list) == 3
+
+
+def test_add_product_not_product(first_category: Category) -> None:
+    with pytest.raises(TypeError):
+        first_category.add_product("product")
 
 
 def test_str_category(first_category: Product) -> None:
