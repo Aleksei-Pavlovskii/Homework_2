@@ -1,5 +1,7 @@
 from typing import Any
 
+from src.product import Product
+
 
 class Category:
     """Класс для представления категорий товаров."""
@@ -33,8 +35,11 @@ class Category:
 
     def add_product(self, product: Any) -> None:
         """Метод, который добавляет новый товар в список товаров"""
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError("Возникла ошибка TypeError при добавлении не продукта")
 
     @property
     def products_in_list(self) -> list:
