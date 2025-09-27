@@ -20,7 +20,9 @@ class Product:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other) -> Any:
-        return self.price * self.quantity + other.price * other.quantity
+        if type(self) == type(other):
+            return self.price * self.quantity + other.price * other.quantity
+        raise TypeError('Возникла ошибка TypeError при попытке сложения')
 
     @classmethod
     def new_product(cls, product: dict, product_list: Any | None = None) -> Any:
@@ -58,3 +60,31 @@ class Product:
                 self.__price = new_price
         else:
             self.__price = new_price
+
+
+class Smartphone(Product):
+    """Класс для представления категории смартфоны."""
+    efficiency: int
+    model: str
+    memory: int
+    color: str
+
+    def __init__(self,name, description, price, quantity, efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency =efficiency
+        self.model =model
+        self.memory =memory
+        self.color =color
+
+
+class LawnGrass(Product):
+    """Класс для представления категории трава газонная."""
+    country: str
+    germination_period: str
+    color: str
+
+    def __init__(self,name, description, price, quantity, country, germination_period, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
