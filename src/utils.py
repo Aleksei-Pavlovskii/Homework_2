@@ -7,7 +7,6 @@ from src.product import Product
 
 
 def read_json(path: str) -> Any:
-
     """Функция, которая читает JSON файл"""
     full_path = os.path.abspath(path)
     with open(full_path, encoding="utf-8") as file:
