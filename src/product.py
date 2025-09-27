@@ -19,10 +19,10 @@ class Product:
     def __str__(self) -> str:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other) -> Any:
-        if type(self) == type(other):
+    def __add__(self, other: Any) -> Any:
+        if type(self) is type(other):
             return self.price * self.quantity + other.price * other.quantity
-        raise TypeError('Возникла ошибка TypeError при попытке сложения')
+        raise TypeError("Возникла ошибка TypeError при попытке сложения")
 
     @classmethod
     def new_product(cls, product: dict, product_list: Any | None = None) -> Any:
@@ -64,26 +64,30 @@ class Product:
 
 class Smartphone(Product):
     """Класс для представления категории смартфоны."""
-    efficiency: int
+
+    efficiency: float
     model: str
     memory: int
     color: str
 
-    def __init__(self,name, description, price, quantity, efficiency, model, memory, color):
+    def __init__(self, name: str, description: str, price: float, quantity: int, efficiency: float, model: str,
+                 memory: int, color: str):
         super().__init__(name, description, price, quantity)
-        self.efficiency =efficiency
-        self.model =model
-        self.memory =memory
-        self.color =color
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
 
 
 class LawnGrass(Product):
     """Класс для представления категории трава газонная."""
+
     country: str
     germination_period: str
     color: str
 
-    def __init__(self,name, description, price, quantity, country, germination_period, color):
+    def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: str,
+                 color: str):
         super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period
