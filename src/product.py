@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any, Callable
+from typing import Any
 
 
 class BaseProduct(ABC):
@@ -49,6 +49,9 @@ class Product(MixinInfo, BaseProduct):
         self.__price = price
         self.quantity = quantity
         super().__init__()
+        if self.quantity == 0:
+            print("Товар с нулевым количеством не может быть добавлен")
+            raise ValueError
 
     def __str__(self) -> str:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."

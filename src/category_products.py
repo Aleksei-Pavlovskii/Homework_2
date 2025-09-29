@@ -45,3 +45,14 @@ class Category(BaseClass):
     @property
     def products_in_list(self) -> list:
         return self.__products
+
+    def middle_price(self) -> Any:
+        """Метод, который подсчитывает средний ценник всех товаров"""
+        list_price = []
+        try:
+            for product in self.__products:
+                list_price.append(product.price)
+            return round(sum(list_price) / len(list_price), 2)
+        except ZeroDivisionError:
+            print("Делить на ноль нельзя")
+            return 0

@@ -1,4 +1,5 @@
 from src.base_class import BaseClass
+from src.category_order_error import NoneQuantityError
 from src.product import Product
 
 
@@ -7,8 +8,12 @@ class Order(BaseClass):
 
     def __init__(self, product: Product, quantity: int) -> None:
         """Метод, который инициализирует экземпляры класса."""
+
         self.product = product
-        self.quantity = quantity
+        if quantity == 0:
+            raise NoneQuantityError
+        else:
+            self.quantity = quantity
 
     @property
     def total_price(self) -> float:
