@@ -7,6 +7,7 @@ from src.product import LawnGrass, Product, Smartphone
 
 def test_product_init(product: Product) -> None:
     """Тест инициализации класса Product"""
+
     assert product.name == "Xiaomi Redmi Note 11"
     assert product.description == "1024GB, Синий"
     assert product.price == 31000.0
@@ -15,6 +16,7 @@ def test_product_init(product: Product) -> None:
 
 def test_new_product(new_product: dict) -> None:
     """Тест добавления нового продукта"""
+
     result = Product.new_product(new_product)
     assert result.name == "Xiaomi Redmi Note 11"
     assert result.description == "1024GB, Синий"
@@ -24,6 +26,7 @@ def test_new_product(new_product: dict) -> None:
 
 def test_new_product_add(new_product: dict, list_products: list) -> None:
     """Тест обновления продукта"""
+
     result = Product.new_product(new_product, list_products)
     assert result is list_products[1]
     assert result.quantity == 21
@@ -32,6 +35,7 @@ def test_new_product_add(new_product: dict, list_products: list) -> None:
 
 def test_price_setter(product: Product) -> None:
     """Тест на изменение цены"""
+
     product.price = 0
     assert product.price == 31000.0
     with patch("builtins.input", return_value="y"):
@@ -68,3 +72,8 @@ def test_lawn_grass_init(product_grass: LawnGrass) -> None:
     assert product_grass.country == "Россия"
     assert product_grass.germination_period == "7 дней"
     assert product_grass.color == "Зеленый"
+
+
+def test_product_init_raises() -> None:
+    with pytest.raises(ValueError):
+        Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 0)

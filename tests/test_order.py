@@ -1,3 +1,6 @@
+import pytest
+
+from src.category_order_error import NoneQuantityError
 from src.order import Order
 from src.product import Product
 
@@ -7,6 +10,11 @@ def test_order(first_product: Product) -> None:
     assert order.product == first_product
     assert order.quantity == 5
     assert isinstance(order, Order)
+
+
+def test_order_raise() -> None:
+    with pytest.raises(NoneQuantityError):
+        Order(Product("Xiaomi Redmi Note 11", "1024GB, Синий", 21000.0, 7), 0)
 
 
 def test_order_total_price(first_product: Product) -> None:

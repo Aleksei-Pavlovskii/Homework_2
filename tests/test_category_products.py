@@ -38,3 +38,11 @@ def test_add_product_not_product(first_category: Category) -> None:
 
 def test_str_category(first_category: Product) -> None:
     assert str(first_category) == "Смартфоны, количество продуктов: 13 шт."
+
+
+def test_middle_price(first_category: Category) -> None:
+    assert first_category.middle_price() == 195000.0
+
+
+def test_middle_price_none_list_product(category_none_list_product: Category) -> None:
+    assert category_none_list_product.middle_price() == 0
