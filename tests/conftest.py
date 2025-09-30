@@ -84,3 +84,12 @@ def product_smartphone() -> Smartphone:
 @pytest.fixture
 def product_grass() -> LawnGrass:
     return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+
+
+@pytest.fixture
+def category_none_list_product() -> Category:
+    return Category(
+        "Телевизоры",
+        "Современный телевизор, который позволяет наслаждаться просмотром, " "станет вашим другом и помощником",
+        [],
+    )
